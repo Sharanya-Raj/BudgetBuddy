@@ -1,19 +1,22 @@
 from user import User 
 
-class userActions:
-    def __init__(self, user):
-        self.user = user    
+class UserActions:
+    def __init__(self, user: User):
+        self.user = user   
     def transactionTracker(self): 
         pass
-    def recordData(dollarlst):
+    def recordData(self):
+        userChoice = input("Type 'Income' or 'Expenses' to update your category: ")
+        while userChoice.capitalize.lower() != "Income" or userChoice.capitalize.lower() != "Expenses":
+            print("Invalid input! Try again.")
+            userChoice = input("Type 'Income' or 'Expenses' to update your category: ")
+    def initializeUser(self, user):
         pass
-    def initializeUser(user):
-        pass
-    def loginUser(user):
+    def loginUser(self, user):
         pass
     def totalCalculator(self):
         pass
-    def connect_with_NJIT_resources(help_category):
+    def connect_with_NJIT_resources(self, help_category):
         if help_category == "FINANCIAL_AID":
             return "Contact the Office of Student Financial Aid Services (SFAS) for FAFSA, grants, loans, scholarships, and special circumstances appeals."
         elif help_category == "BILLING_PAYMENTS":
