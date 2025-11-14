@@ -5,7 +5,11 @@ if __name__ == "__main__":
     acct = input("Do you have an existing account? (yes/no): ").lower()
     while acct != "yes" and acct != "no":
         acct = input("Invalid input. Do you have an existing account? (yes/no): ").lower()
-    userName = input("Enter username: ")
+    if acct == "no":
+        newAcct = True
+    else:
+        newAcct = False
     email = input("Enter email: ")
+    userName = input("Enter username: ")
     password = input("Enter password: ")
-    user = User(userName, password, email, False, False)  # Email and studentNJIT are not needed for login
+    user = User(userName, password, email, False, newAcct)

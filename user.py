@@ -17,38 +17,36 @@ class User:
                     conflict_found = True
                     break  # Restart loop with new email
 
-                # Check for username/password match
-                if inputUserData[0] == user_data[0] and inputUserData[1] == user_data[1]:
-                    self.userName = user_data[0]
-                    self.password = user_data[1]
-                    self.email = user_data[2]
-                    self.studentNJIT = user_data[3]
-                    self.income = user_data[4]
-                    self.expenses = user_data[5]
-                    print("Loaded existing user.")
-                    return
-                
-                # Username exists but password is wrong
-                elif inputUserData[0] == user_data[0]:
+                if inputUserData[0] == user_data[0]:
                     if newAcct:
                         print("Username already exists. Please choose a different username.")
                         inputUserData[0] = input("Enter a new username: ")
                         conflict_found = True
                         break  # Restart loop with new username
                     else:
-                        pchange = input("Incorrect password. Would you like to change your password? (yes/no): ")
-                        if pchange.lower() == "yes":
-                            email = input("Enter your email: ")
-                            self.change_password(email, inputUserData[0])
-                        else:
-                            print("Exiting program.")
+                        if inputUserData[0] == user_data[0] and inputUserData[1] == user_data[1]:
+                            self.userName = user_data[0]
+                            self.password = user_data[1]
+                            self.email = user_data[2]
+                            self.studentNJIT = user_data[3]
+                            self.income = user_data[4]
+                            self.expenses = user_data[5]
+                            print("Loaded existing user.")
                             return
+                        else:
+                            pchange = input("Incorrect password. Would you like to change your password? (yes/no): ")
+                            if pchange.lower() == "yes":
+                                email = input("Enter your email: ")
+                                self.change_password(email, inputUserData[0])
+                            else:
+                                print("Exiting program.")
+                                return
 
             if not conflict_found:
                 if newAcct:
                     self.userName = userName
                     self.password = self.valid_password(password)
-                    self.email = input("Enter your email: ")
+                    self.email = email
                     studentNJIT_input = input("Are you a NJIT student? (yes/no): ").lower()
                     if studentNJIT_input != "yes" and studentNJIT_input != "no":
                         while studentNJIT_input != "yes" and studentNJIT_input != "no":
@@ -57,12 +55,14 @@ class User:
                         self.studentNJIT = True
                     else:
                         self.studentNJIT = False
-                    self.income = {}
-                self.expenses = {}
-                opened_file = open('userData.csv', mode = "a", newline ='')
-                opened_file.write(f"{self.userName},{self.password},{self.email},{self.studentNJIT},{self.income},{self.expenses}\n")
-                opened_file.close()
-            return
+                    self.income = {0}
+                    self.expenses = {0}
+                    opened_file = open('userData.csv', mode = "a", newline ='')
+                    opened_file.write(f"{self.userName},{self.password},{self.email},{self.studentNJIT},{self.income},{self.expenses}\n")
+                    opened_file.close()
+                else:
+                    print("Invalid credentials. Exiting program.")
+                return
 
     def valid_password(self,password):
         '''Check if the password meets the required criteria'''
