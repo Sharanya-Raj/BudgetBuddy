@@ -13,3 +13,9 @@ def evaluatespending(amount, income):
         return "Spending exceeds limit.You need to cut down your expenses."
     else:
         return "Spending is within the limit. You are doing good."
+
+
+
+
+
+
