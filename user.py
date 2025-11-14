@@ -57,8 +57,8 @@ class User:
                         self.studentNJIT = True
                     else:
                         self.studentNJIT = False
-                    self.income = {0}
-                self.expenses = {0}
+                    self.income = {}
+                self.expenses = {}
                 opened_file = open('userData.csv', mode = "a", newline ='')
                 opened_file.write(f"{self.userName},{self.password},{self.email},{self.studentNJIT},{self.income},{self.expenses}\n")
                 opened_file.close()
