@@ -53,7 +53,7 @@ class User:
                             studentNJIT_input = input("Invalid input. Are you a NJIT student? (yes/no): ").lower()
                     elif studentNJIT_input == "yes":
                         self.studentNJIT = True
-                    else:
+                    elif studentNJIT_input == "no":
                         self.studentNJIT = False
                     self.income = {0}
                     self.expenses = {0}
