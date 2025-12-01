@@ -1,11 +1,18 @@
+from datetime import datetime, timedelta
 from user import User 
 
 class userActions:
-    def __init__(self, userName, password, email, studentNJIT, newAcct):
-        self.user = User(userName, password, email, studentNJIT, newAcct)
+    def __init__(self, userName, password, email, studentNJIT, newAcct,help_category):
+        self.userName = userName
+        self.password = password
+        self.email = email
+        self.studentNJIT = studentNJIT
+        self.newAcct = newAcct
+
+        
+        self.user.recurringBills = []
 
     def transactionTracker(self, typeDict):
-        '''Takes either revenue or expense transactions and displays them by type.'''
         for transaction in typeDict:
             print(transaction+": $"+str(typeDict[transaction]),end="\n")
 
@@ -39,5 +46,23 @@ class userActions:
             return "Your expenses match your income. Try to save a portion of your income."
         else:
             return "Great job! Your income exceeds your expenses. Consider investing or saving the surplus."
-    
-    
+    def recurringAlerts(self):
+        """Check bills in self.user.recurringBills and alert if due within 3 days"""
+        today = datetime.today().date()
+        alert_threshold = today + timedelta(days=3)
+            if len(self.user.recurringBills) == 0:
+                print("No recurring bills found.")
+                return
+
+        for bill in self.user.recurringBills:
+            bill_name= bill[0]
+            amount = bill[1]
+            due_date_str = bill[2]
+            due_date = datetime.strptime(due_date_str, "%Y-%m-%d").date()
+            if today <= due_date and due_date <= alert_threshold:
+                print(f"Alert: '{bill_name}' of ${amount:.2f} is due on {due_date}")
+
+    def addBill(self, bill_name, amount, due_date):
+        self.user.recurringBills.append([bill_name, amount, due_date])
+
+        
