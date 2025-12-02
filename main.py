@@ -12,7 +12,7 @@ if __name__ == "__main__":
     email = input("Enter email: ")
     userName = input("Enter username: ")
     password = input("Enter password: ")
-    user = userActions(userName, password, email, False, newAcct)
+    user = User(userName, password, email, False, newAcct)
 
     print(f"Welcome, {user.userName}!")
 

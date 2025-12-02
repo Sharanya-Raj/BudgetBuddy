@@ -8,8 +8,6 @@ class userActions:
         self.email = email
         self.studentNJIT = studentNJIT
         self.newAcct = newAcct
-
-        
         self.user.recurringBills = []
 
     def transactionTracker(self, typeDict):
