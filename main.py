@@ -14,12 +14,15 @@ if __name__ == "__main__":
     password = input("Enter password: ")
     user = User(userName, password, email, False, newAcct)
 
-    print(f"Welcome, {user.userName}!")
+    print(f"Welcome, {user.userName}! Here are the available actions you can perform:")
 
     #Displaying available actions
     listActions = ["transactionTracker", "recordData", "totalCalculator", "connect_with_NJIT_resources", "budgetAdvisor","recurringAlerts", "addRecurringBill","removeRecurringBill"] 
+    
+    count = 1
     for action in listActions:
-        print(f"Available action: {action}")
+        print("\n" + str(count) + ". " + action)
+        count += 1
     input_action = input("Enter an action to perform: ")
 
     #Utilizing transactionTracker
@@ -41,11 +44,11 @@ if __name__ == "__main__":
     elif input_action == "recordData":
         revExp = input("Do you want to record a 'revenue' or 'expense' transaction? ").lower()
         if revExp == "revenue":
-            transactionType = input("Enter the type of transaction. Current types are: " + user.revenueType + ": ")
+            transactionType = input("Enter the type of transaction. Current types are: " + str(user.revenueType) + ": ")
             amount = float(input("Enter the amount in dollars. If a previously recorded transaction exists, this amount will be added to it (or substracted if negative number entered). Else, this amount will serve as the starting value: "))
             user.recordData(user.income, transactionType, amount)
         elif revExp == "expense":
-            transactionType = input("Enter the type of transaction. Current types are: " + user.expenseType + ": ")
+            transactionType = input("Enter the type of transaction. Current types are: " + str(user.expenseType) + ": ")
             amount = float(input("Enter the amount in dollars. If a previously recorded transaction exists, this amount will be added to it (or substracted if negative number entered). Else, this amount will serve as the starting value: "))
             user.recordData(user.expenses, transactionType, amount)
         else:
