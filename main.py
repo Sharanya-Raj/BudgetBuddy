@@ -42,22 +42,22 @@ if __name__ == "__main__":
         revExp = input("Do you want to record a 'revenue' or 'expense' transaction? ").lower()
         if revExp == "revenue":
             transactionType = input("Enter the type of transaction. Current types are: " + user.revenueType + ": ")
-            amount = float(input("Enter the amount in dollars: "))
+            amount = float(input("Enter the amount in dollars. If a previously recorded transaction exists, this amount will be added to it (or substracted if negative number entered). Else, this amount will serve as the starting value: "))
             user.recordData(user.income, transactionType, amount)
         elif revExp == "expense":
             transactionType = input("Enter the type of transaction. Current types are: " + user.expenseType + ": ")
-            amount = float(input("Enter the amount in dollars: "))
+            amount = float(input("Enter the amount in dollars. If a previously recorded transaction exists, this amount will be added to it (or substracted if negative number entered). Else, this amount will serve as the starting value: "))
             user.recordData(user.expenses, transactionType, amount)
         else:
             print("Invalid input. Please enter 'revenue' or 'expense'. Another incorrect response will exit the program.")
             revExp = input("Do you want to record a 'revenue' or 'expense' transaction? ").lower()
             if revExp == "revenue":
                 transactionType = input("Enter the type of transaction. Current types are: " + str(user.income.keys()) + ": ")
-                amount = float(input("Enter the amount in dollars: "))
+                amount = float(input("Enter the amount in dollars. If a previously recorded transaction exists, this amount will be added to it (or substracted if negative number entered). Else, this amount will serve as the starting value: "))
                 user.recordData(user.income, transactionType, amount)
             elif revExp == "expense":
                 transactionType = input("Enter the type of transaction. Current types are: " + str(user.expenses.keys()) + ": ")
-                amount = float(input("Enter the amount in dollars: "))
+                amount = float(input("Enter the amount in dollars. If a previously recorded transaction exists, this amount will be added to it (or substracted if negative number entered). Else, this amount will serve as the starting value: "))
                 user.recordData(user.expenses, transactionType, amount)
             else:
                 print("Invalid input. Exiting program.")

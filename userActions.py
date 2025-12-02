@@ -9,8 +9,8 @@ class userActions:
         self.studentNJIT = studentNJIT
         self.newAcct = newAcct
         self.user.recurringBills = []
-        self.expenseType = ["Rent", "Utilities", "Groceries", "Dining Out", "Entertainment", "Transportation", "Miscellaneous"]
-        self.revenueType = ["Salary", "Freelance", "Investments", "Gifts", "Miscellaneous"]
+        self.expenseType = ["Housing", "Utilities", "Groceries", "Dining Out", "Entertainment", "Transportation", "Miscellaneous"]
+        self.revenueType = ["Salary", "Freelance Work", "Investment Gains", "Gifts", "Miscellaneous"]
 
     def transactionTracker(self, typeDict):
         '''Displays all transactions in the given dictionary (revenue/expense).'''
@@ -78,5 +78,5 @@ class userActions:
                 return
         print(f"No recurring bill found with the name: {bill_name}")
     
-    
+
         
