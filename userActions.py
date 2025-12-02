@@ -9,8 +9,13 @@ class userActions:
         self.studentNJIT = studentNJIT
         self.newAcct = newAcct
         self.user.recurringBills = []
+        global expenseType
+        expenseType = ["Rent", "Utilities", "Groceries", "Dining Out", "Entertainment", "Transportation", "Miscellaneous"]
+        global incomeType
+        incomeType = ["Salary", "Freelance", "Investments", "Gifts", "Miscellaneous"]
 
     def transactionTracker(self, typeDict):
+        '''Displays all transactions in the given dictionary (revenue/expense).'''
         for transaction in typeDict:
             print(transaction+": $"+str(typeDict[transaction]),end="\n")
 
@@ -26,6 +31,7 @@ class userActions:
         return sum(typeDict.values())
 
     def connect_with_NJIT_resources(help_category):
+        '''Provides NJIT resources based on the help category.'''
         if help_category == "FINANCIAL_AID":
             return "Contact the Office of Student Financial Aid Services (SFAS) for FAFSA, grants, loans, scholarships, and special circumstances appeals."
         elif help_category == "BILLING_PAYMENTS":
@@ -44,6 +50,7 @@ class userActions:
             return "Your expenses match your income. Try to save a portion of your income."
         else:
             return "Great job! Your income exceeds your expenses. Consider investing or saving the surplus."
+    
     def recurringAlerts(self):
         """Check bills in self.user.recurringBills and alert if due within 3 days"""
         today = datetime.today().date()
@@ -60,7 +67,16 @@ class userActions:
             if today <= due_date and due_date <= alert_threshold:
                 print(f"Alert: '{bill_name}' of ${amount:.2f} is due on {due_date}")
 
-    def addBill(self, bill_name, amount, due_date):
+    def addRecurringBill(self, bill_name, amount, due_date):
+        """Add a new recurring bill to self.user.recurringBills"""
         self.user.recurringBills.append([bill_name, amount, due_date])
 
+    def removeRecurringBill(self, bill_name):
+        """Remove a recurring bill from self.user.recurringBills by name"""
+        for bill in self.user.recurringBills:
+            if bill[0] == bill_name:
+                self.user.recurringBills.remove(bill)
+                print(f"Removed recurring bill: {bill_name}")
+                return
+        print(f"No recurring bill found with the name: {bill_name}")
         

@@ -17,7 +17,7 @@ if __name__ == "__main__":
     print(f"Welcome, {user.userName}!")
 
     #Displaying available actions
-    listActions = ["transactionTracker", "recordData", "totalCalculator", "connect_with_NJIT_resources", "budgetAdvisor"] 
+    listActions = ["transactionTracker", "recordData", "totalCalculator", "connect_with_NJIT_resources", "budgetAdvisor","recurringAlerts", "addRecurringBill","removeRecurringBill"] 
     for action in listActions:
         print(f"Available action: {action}")
     input_action = input("Enter an action to perform: ")
@@ -36,17 +36,18 @@ if __name__ == "__main__":
                 user.transactionTracker(user.income)
             else:
                 user.transactionTracker(user.expenses)
+    
     #Utilizing recordData
     elif input_action == "recordData":
         revExp = input("Do you want to record a 'revenue' or 'expense' transaction? ").lower()
         if revExp == "revenue":
-            transactionType = input("Enter the type of transaction. Current types are: " + str(user.income.keys()) + ": ")
+            transactionType = input("Enter the type of transaction. Current types are: " + revenueType + ": ")
             amount = float(input("Enter the amount in dollars: "))
             user.recordData(user.income, transactionType, amount)
         elif revExp == "expense":
-            transactionType = input("Enter the type of transaction. Current types are: " + str(user.income.keys()) + ": ")
+            transactionType = input("Enter the type of transaction. Current types are: " + expenseType + ": ")
             amount = float(input("Enter the amount in dollars: "))
-            user.recordData(user.income, transactionType, amount)
+            user.recordData(user.expenses, transactionType, amount)
         else:
             print("Invalid input. Please enter 'revenue' or 'expense'. Another incorrect response will exit the program.")
             revExp = input("Do you want to record a 'revenue' or 'expense' transaction? ").lower()
@@ -58,5 +59,55 @@ if __name__ == "__main__":
                 transactionType = input("Enter the type of transaction. Current types are: " + str(user.income.keys()) + ": ")
                 amount = float(input("Enter the amount in dollars: "))
                 user.recordData(user.income, transactionType, amount)
-    #Performing financial analysis
+    
+    #Utilizing totalCalculator
+    elif input_action == "totalCalculator":
+        revExp = input("Do you want to calculate total 'revenue' or 'expense' transactions? ").lower()
+        if revExp == "revenue":
+            total_income = user.totalCalculator(user.income)
+            print(f"Total revenue: ${total_income:.2f}")
+        elif revExp == "expense":
+            total_expenses = user.totalCalculator(user.expenses)
+            print(f"Total expenses: ${total_expenses:.2f}")
+        else:
+            print("Invalid input. Please enter 'revenue' or 'expense'. Another incorrect response will exit the program.")
+            revExp = input("Do you want to calculate total 'revenue' or 'expense' transactions? ").lower()
+            if revExp == "revenue":
+                total_income = user.totalCalculator(user.income)
+                print(f"Total revenue: ${total_income:.2f}")
+            else:
+                total_expenses = user.totalCalculator(user.expenses)
+                print(f"Total expenses: ${total_expenses:.2f}")
+    
+    #Utilizing connect_with_NJIT_resources
+    elif input_action == "connect_with_NJIT_resources":
+        help_category = input("Enter help category (FINANCIAL_AID, BILLING_PAYMENTS, EMERGENCY_FINANCE): ").upper()
+        resource_info = user.connect_with_NJIT_resources(help_category)
+        print(resource_info)
+    
+    #Utilizing budgetAdvisor
+    elif input_action == "budgetAdvisor":
+        advice = user.budgetAdvisor(user.totalCalculator(user.income), user.totalCalculator(user.expenses))
+        print(advice)
+    
+    #Utilizing recurringAlerts
+    elif input_action == "recurringAlerts":
+        user.recurringAlerts()
+    
+    #Utilizing addRecurringBill
+    elif input_action == "addRecurringBill":
+        bill_name = input("Enter the name of the recurring bill: ")
+        amount = float(input("Enter the amount of the bill in dollars: "))
+        due_date = input("Enter the due date of the bill (YYYY-MM-DD): ")
+        user.addRecurringBill(bill_name, amount, due_date)
+        print(f"Added recurring bill: {bill_name}, Amount: ${amount:.2f}, Due Date: {due_date}")
+    
+    #Utilizing removeRecurringBill
+    elif input_action == "removeRecurringBill":
+        bill_name = input("Enter the name of the recurring bill to remove: ")
+        user.removeRecurringBill(bill_name)
+    
+    else:
+        print("Invalid action selected. Exiting program.")
+
     
