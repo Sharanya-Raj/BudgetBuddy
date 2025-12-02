@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
 from user import User 
+import matplotlib.pyplot as myPlot
 
 class userActions:
     def __init__(self, userName, password, email, studentNJIT, newAcct,help_category):
@@ -7,7 +8,7 @@ class userActions:
         self.password = password
         self.email = email
         self.studentNJIT = studentNJIT
-        self.newAcct = newAcct
+        self.newAcct = newAcct 
         self.user.recurringBills = []
         self.expenseType = ["Housing", "Utilities", "Groceries", "Dining Out", "Entertainment", "Transportation", "Miscellaneous"]
         self.revenueType = ["Salary", "Freelance Work", "Investment Gains", "Gifts", "Miscellaneous"]
@@ -16,6 +17,23 @@ class userActions:
         '''Displays all transactions in the given dictionary (revenue/expense).'''
         for transaction in typeDict:
             print(transaction+": $"+str(typeDict[transaction]),end="\n")
+        
+        # If the dictionary is empty, then skip the plotting
+        if len(typeDict) == 0:
+            print("No data for graph.")
+            return 
+        
+        plotLabels = list(typeDict.keys())
+        plotValues = list(typeDict.values())
+
+        myPlot.figure(figsize=(7,4))
+        myPlot.bar(plotLabels, plotValues)
+        myPlot.title("Transaction Overview")
+        myPlot.xlabel("Category")
+        myPlot.yLabel("Amount ($)")
+        myPlot.xticks(rotation = 45)
+        myPlot.tight_layout()
+        myPlot.show()
 
     def recordData(self, typeDict, transactionType, amount):
         '''Records a new transaction by updating the appropriate dictionary.'''
