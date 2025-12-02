@@ -8,7 +8,7 @@ class userActions:
         self.password = password
         self.email = email
         self.studentNJIT = studentNJIT
-        self.newAcct = newAcct
+        self.newAcct = newAcct 
         self.user.recurringBills = []
         self.expenseType = ["Housing", "Utilities", "Groceries", "Dining Out", "Entertainment", "Transportation", "Miscellaneous"]
         self.revenueType = ["Salary", "Freelance Work", "Investment Gains", "Gifts", "Miscellaneous"]
