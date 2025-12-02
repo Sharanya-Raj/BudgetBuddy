@@ -31,6 +31,7 @@ class User:
                             self.studentNJIT = user_data[3]
                             self.income = user_data[4]
                             self.expenses = user_data[5]
+                            self.user.recurringBills = [6]
                             print("Loaded existing user.")
                             return
                         else:
@@ -55,8 +56,9 @@ class User:
                         self.studentNJIT = True
                     elif studentNJIT_input == "no":
                         self.studentNJIT = False
-                    self.income = {0}
-                    self.expenses = {0}
+                    self.income = {}
+                    self.expenses = {}
+                    self.user.recurringBills = []
                     opened_file = open('userData.csv', mode = "a", newline ='')
                     opened_file.write(f"{self.userName},{self.password},{self.email},{self.studentNJIT},{self.income},{self.expenses}\n")
                     opened_file.close()
