@@ -210,6 +210,8 @@ class User:
         return sum(typeDict.values())
 
     def connect_with_NJIT_resources(self, help_category):
+        if self.studentNJIT == False:
+            return "This resource is only available to NJIT students."
         '''Provides NJIT resources based on the help category.'''
         if help_category == "FINANCIAL_AID":
             return "Contact the Office of Student Financial Aid Services (SFAS) for FAFSA, grants, loans, scholarships, and special circumstances appeals."
