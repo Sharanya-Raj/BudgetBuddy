@@ -50,9 +50,9 @@ class userActions:
         """Check bills in self.user.recurringBills and alert if due within 3 days"""
         today = datetime.today().date()
         alert_threshold = today + timedelta(days=3)
-            if len(self.user.recurringBills) == 0:
-                print("No recurring bills found.")
-                return
+        if len(self.user.recurringBills) == 0:
+            print("No recurring bills found.")
+            return
 
         for bill in self.user.recurringBills:
             bill_name= bill[0]
