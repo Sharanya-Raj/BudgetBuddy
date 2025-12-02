@@ -55,10 +55,12 @@ if __name__ == "__main__":
                 transactionType = input("Enter the type of transaction. Current types are: " + str(user.income.keys()) + ": ")
                 amount = float(input("Enter the amount in dollars: "))
                 user.recordData(user.income, transactionType, amount)
-            else:
-                transactionType = input("Enter the type of transaction. Current types are: " + str(user.income.keys()) + ": ")
+            elif revExp == "expense":
+                transactionType = input("Enter the type of transaction. Current types are: " + str(user.expenses.keys()) + ": ")
                 amount = float(input("Enter the amount in dollars: "))
-                user.recordData(user.income, transactionType, amount)
+                user.recordData(user.expenses, transactionType, amount)
+            else:
+                print("Invalid input. Exiting program.")
     
     #Utilizing totalCalculator
     elif input_action == "totalCalculator":
