@@ -82,7 +82,7 @@ if __name__ == "__main__":
     
     #Utilizing recurringAlerts
     elif input_action == "recurringAlerts":
-        user.recurringAlerts()
+        user.recurringAlerts(user.recurringBills)
     
     #Utilizing addRecurringBill
     elif input_action == "addRecurringBill":
