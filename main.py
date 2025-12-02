@@ -41,11 +41,11 @@ if __name__ == "__main__":
     elif input_action == "recordData":
         revExp = input("Do you want to record a 'revenue' or 'expense' transaction? ").lower()
         if revExp == "revenue":
-            transactionType = input("Enter the type of transaction. Current types are: " + revenueType + ": ")
+            transactionType = input("Enter the type of transaction. Current types are: " + user.revenueType + ": ")
             amount = float(input("Enter the amount in dollars: "))
             user.recordData(user.income, transactionType, amount)
         elif revExp == "expense":
-            transactionType = input("Enter the type of transaction. Current types are: " + expenseType + ": ")
+            transactionType = input("Enter the type of transaction. Current types are: " + user.expenseType + ": ")
             amount = float(input("Enter the amount in dollars: "))
             user.recordData(user.expenses, transactionType, amount)
         else:

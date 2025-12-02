@@ -9,10 +9,8 @@ class userActions:
         self.studentNJIT = studentNJIT
         self.newAcct = newAcct
         self.user.recurringBills = []
-        global expenseType
-        expenseType = ["Rent", "Utilities", "Groceries", "Dining Out", "Entertainment", "Transportation", "Miscellaneous"]
-        global incomeType
-        incomeType = ["Salary", "Freelance", "Investments", "Gifts", "Miscellaneous"]
+        self.expenseType = ["Rent", "Utilities", "Groceries", "Dining Out", "Entertainment", "Transportation", "Miscellaneous"]
+        self.revenueType = ["Salary", "Freelance", "Investments", "Gifts", "Miscellaneous"]
 
     def transactionTracker(self, typeDict):
         '''Displays all transactions in the given dictionary (revenue/expense).'''
