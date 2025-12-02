@@ -109,7 +109,7 @@ if __name__ == "__main__":
     for action in listActions:
         print("\n" + str(count) + ". " + action)
         count += 1
-    input_action = input("Enter an action to perform: Note that it is recommended to utilize \"transaction tracker\" to view pasts transactions before using this function, as your changes will affect past recorded data. Treat information stored in transactionTracker as amounts for the month (according to your personal budgeting), not cumulative totals.")
+    input_action = input("Enter an action to perform: Note that it is recommended to utilize \"transaction tracker\" to view pasts transactions before using this function, as your changes will affect past recorded data. Treat information stored in transactionTracker as amounts for the month (according to your personal budgeting), not cumulative totals. ")
 
     #Utilizing transactionTracker
     if input_action == "transactionTracker":
