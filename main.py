@@ -8,11 +8,12 @@ if __name__ == "__main__":
     revenueType = ["Salary", "Freelance Work", "Investment Gains", "Gifts", "Miscellaneous"]
     def transactionTracker(typeDict):
         '''Displays all transactions in the given dictionary (revenue/expense).'''
-        for transaction in typeDict:
-            print(transaction+": $"+str(typeDict[transaction]),end="\n")
+        
         if len(typeDict) == 0:
-            print("No data for graph.")
+            print("No current data. ")
         else:
+            for transaction in typeDict:
+                print(transaction+": $"+str(typeDict[transaction])+"\n")
             plotLabels = list(typeDict.keys())
             plotValues = list(typeDict.values())
             myPlot.figure(figsize=(7,4))
